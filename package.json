@@ -1,0 +1,34 @@
+{
+  "name": "visitor",
+  "version": "1.0.0",
+  "description": "node server for visitor",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run nodemon -- app.js",
+    "nodemon": "node --max_old_space_size=4096 node_modules/nodemon/bin/nodemon.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanpipy/visitor.git"
+  },
+  "keywords": [
+    "node",
+    "visitor"
+  ],
+  "author": "vanpipy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vanpipy/visitor/issues"
+  },
+  "homepage": "https://github.com/vanpipy/visitor#readme",
+  "dependencies": {
+    "koa": "^2.5.0",
+    "koa-router": "^7.4.0",
+    "koa-send": "^4.1.3",
+    "request": "^2.85.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
