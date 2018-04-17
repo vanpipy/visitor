@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm run nodemon -- app.js",
+    "dev": "npm run nodemon -- --inspect app.js",
     "nodemon": "node --max_old_space_size=4096 node_modules/nodemon/bin/nodemon.js"
   },
   "repository": {
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/vanpipy/visitor#readme",
   "dependencies": {
+    "ejs": "^2.5.8",
     "koa": "^2.5.0",
     "koa-router": "^7.4.0",
     "koa-send": "^4.1.3",
