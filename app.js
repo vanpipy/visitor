@@ -1,26 +1,31 @@
 'use strict';
 
+const { resolve, join } = require('path');
+
 const Koa = require('koa');
-const Router = require('koa-router');
 const send = require('koa-send');
-const request = require('request');
+const render = require('koa-ejs');
+const router = require('./route');
 
 var app = new Koa();
-var router = new Router();
 
-router.get('/search', async (ctx, next) => {
-    const page = ctx.query.page || 1;
-    const user = ctx.query.q;
-
-    /*
-     * https://api.github.com/users/${user}
-     * https://api.github.com/users
-     */
+render(app, {
+    root: join(__dirname, 'views'),
+    layout: false,
+    viewExt: 'html',
+    cache: false,
+    debug: true,
 });
 
-router.get('/', async (ctx, next) => {
-    await send(ctx, '/public/index.html');
+app.use(async (ctx, next) => {
+    if (/api|search/.test(ctx.path)) {
+        await next();
+    } else {
+        await send(ctx, ctx.path, { root: resolve(__dirname, 'public'), index: 'index.html' });
+    }
 });
+
+app.keys = ['im a newer sercret', 'i like turtle'];
 
 app.use(router.routes());
 app.use(router.allowedMethods());
