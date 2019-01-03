@@ -1,14 +1,24 @@
 
+const model = require('../models/search');
+
 module.exports = {
     get: async (ctx, next) => {
-        const user = ctx.query.q;
+        const userexisted = model.getUser(ctx.query.q);
 
         /*
          * https://api.github.com/users/${user}
          * https://api.github.com/users
          */
-        await ctx.render('search', {
-            result: 'The search query is: ' + user
-        });
+        if (userexisted) {
+            await ctx.render('search', {
+                result: `The result is: ${JSON.stringify(userexisted)}`,
+            });
+        } else {
+            await ctx.render('search', {
+                result: 'The user you search is not exist.',
+            });
+        }
+
+        await next();
     }
 };

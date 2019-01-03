@@ -31,6 +31,7 @@
     "request": "^2.85.0"
   },
   "devDependencies": {
+    "lowdb": "^1.0.0",
     "nodemon": "^1.17.3"
   }
 }

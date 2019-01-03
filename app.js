@@ -14,7 +14,7 @@ render(app, {
     layout: false,
     viewExt: 'html',
     cache: false,
-    debug: true,
+    debug: false,
 });
 
 app.use(async (ctx, next) => {
